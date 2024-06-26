@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Inventory-Management-System-Demo/static/css/main.6f575727.css",
-    "main.js": "/Inventory-Management-System-Demo/static/js/main.042f90f7.js",
+    "main.js": "/Inventory-Management-System-Demo/static/js/main.46821877.js",
     "static/media/userImage.png": "/Inventory-Management-System-Demo/static/media/userImage.19caad1f29b02a36f0f8.png",
     "static/media/Logo-new2-1 1.jpg": "/Inventory-Management-System-Demo/static/media/Logo-new2-1 1.75c424b6470009c75e11.jpg",
     "static/media/inventoryIcon.png": "/Inventory-Management-System-Demo/static/media/inventoryIcon.31bb49475318f5dfd665.png",
@@ -11,10 +11,10 @@
     "static/media/userManagement.png": "/Inventory-Management-System-Demo/static/media/userManagement.586a697f6975bcebc365.png",
     "index.html": "/Inventory-Management-System-Demo/index.html",
     "main.6f575727.css.map": "/Inventory-Management-System-Demo/static/css/main.6f575727.css.map",
-    "main.042f90f7.js.map": "/Inventory-Management-System-Demo/static/js/main.042f90f7.js.map"
+    "main.46821877.js.map": "/Inventory-Management-System-Demo/static/js/main.46821877.js.map"
   },
   "entrypoints": [
     "static/css/main.6f575727.css",
-    "static/js/main.042f90f7.js"
+    "static/js/main.46821877.js"
   ]
 }
