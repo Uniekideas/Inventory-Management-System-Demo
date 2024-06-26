@@ -1,0 +1,181 @@
+import { React, createContext, useState } from "react";
+import axios from "axios";
+
+const SchoolContext = createContext();
+export default SchoolContext;
+
+
+export const SchoolProvider = ({ children }) => {
+  const [getSchoolsData, setGetSchoolsData] = useState(null);
+  const [getSchoolsError, setGetSchoolsError] = useState(null);
+  const [getSchoolsIsLoading, setGetSchoolsIsLoading] = useState(true);
+
+  const [addSchoolError, setAddSchoolError] = useState(null);
+  const [addSchoolIsLoading, setAddSchoolIsLoading] = useState(true);
+  const [addSchoolResponse, setAddSchoolResponse] = useState(null);
+
+  const [getSingleSchoolData, setGetSingleSchoolData] = useState(null);
+  const [getSingleSchoolError, setSingleSchoolError] = useState(null);
+  const [getSingleSchoolIsLoading, setSingleSchoolIsLoading] = useState(true);
+
+  const [deleteSchoolResponse, setdeleteSchoolResponse] = useState(null);
+  const [deleteSchoolError, setdeleteSchoolError] = useState(null);
+  const [deleteSchoolIsLoading, setdeleteSchoolIsLoading] = useState(true);
+
+  const [editSchoolResponse, seteditSchoolResponse] = useState(null);
+  const [editSchoolError, seteditSchoolError] = useState(null);
+  const [editSchoolIsLoading, seteditSchoolIsLoading] = useState(true);
+  const [editedFormData, seteditedFormData] = useState({
+    name: '',
+    website: '',
+    email: '',
+    phone_number: '',
+    level: '',
+    address: '',
+    city: '',
+    lga: '',
+    postal_code: '',
+  });
+
+
+  const getSchools = async () => {
+    setGetSchoolsIsLoading(true);
+    const baseUrl = process.env.REACT_APP_EDO_SUBEB_BASE_URL;
+    try {
+      const response = await axios.get(`${baseUrl}/api/school`);
+      setGetSchoolsData(response.data.schools);
+    } catch (error) {
+      setGetSchoolsError(error);
+    } finally {
+      setGetSchoolsIsLoading(false);
+    }
+  };
+
+
+  const getSingleSchool = async (pk) => {
+    setSingleSchoolIsLoading(true);
+    const baseUrl = process.env.REACT_APP_EDO_SUBEB_BASE_URL;
+    try {
+      const response = await axios.get(`${baseUrl}/api/school/${pk}`);
+      setGetSingleSchoolData(response.data.school);
+      seteditedFormData({
+        name: response.data.school.name,
+        website: response.data.school.website,
+        email: response.data.school.email,
+        phone_number: response.data.school.phone_number,
+        level: response.data.school.level,
+        address: response.data.school.address,
+        city: response.data.school.city,
+        lga: response.data.school.lga,
+        postal_code: response.data.school.postal_code,
+      })
+    } catch (error) {
+        setSingleSchoolError(error);
+    } finally {
+        setSingleSchoolIsLoading(false);
+    }
+  };
+
+
+  const handleAddSchool = async (e) => {
+    setAddSchoolIsLoading(true);
+    const baseUrl = process.env.REACT_APP_EDO_SUBEB_BASE_URL;
+    e.preventDefault();
+    const formData = {
+      name: e.target.name.value,
+      website: e.target.website.value,
+      email: e.target.email.value,
+      phone_number: e.target.phone_number.value,
+      level: e.target.level.value,
+      address: e.target.address.value,
+      city: e.target.city.value,
+      lga: e.target.lga.value,
+      postal_code: e.target.postal_code.value,
+    };
+    try {
+      const result = await axios.post(`${baseUrl}/api/school`, formData);
+      setAddSchoolResponse(result.data);
+    } catch (error) {
+        setAddSchoolError(error.response.data.message);
+      console.log(error);
+    } finally {
+        setAddSchoolIsLoading(false);
+    }
+  };
+
+  const handleEditSchool = async (e, pk) => {
+    seteditSchoolIsLoading(true);
+    const baseUrl = process.env.REACT_APP_EDO_SUBEB_BASE_URL;
+    e.preventDefault();
+    const updatedData = {
+      name: editedFormData.name,
+      website: editedFormData.website,
+      email: editedFormData.email,
+      phone_number: editedFormData.phone_number,
+      level: editedFormData.level,
+      address: editedFormData.address,
+      city: editedFormData.city,
+      lga: editedFormData.lga,
+      postal_code: editedFormData.postal_code,
+    };
+    try {
+      const result = await axios.patch(`${baseUrl}/api/school/${pk}`, updatedData);
+      seteditSchoolResponse(result.data);
+    } catch (error) {
+        seteditSchoolError(error.response.data.message);
+      console.log(error);
+    } finally {
+        seteditSchoolIsLoading(false);
+    }
+  };
+
+
+  const deleteSchool = async (pk) => {
+    setdeleteSchoolIsLoading(true);
+    const baseUrl = process.env.REACT_APP_EDO_SUBEB_BASE_URL;
+    try {
+      const response = await axios.delete(`${baseUrl}/api/school/${pk}`);
+      setdeleteSchoolResponse(response.data.message);
+    } catch (error) {
+        setdeleteSchoolError(error.response.data.message);
+    } finally {
+        setdeleteSchoolIsLoading(false);
+    }
+  };
+
+
+  let contextData = {
+    getSchools: getSchools,
+    handleAddSchool: handleAddSchool,
+    setAddSchoolResponse: setAddSchoolResponse,
+    setAddSchoolError: setAddSchoolError,
+    getSingleSchool: getSingleSchool,
+    deleteSchool: deleteSchool,
+    seteditedFormData: seteditedFormData,
+    handleEditSchool: handleEditSchool,
+    seteditSchoolResponse: seteditSchoolResponse,
+    seteditSchoolError: seteditSchoolError,
+    getSchoolsIsLoading: getSchoolsIsLoading,
+    getSchoolsError: getSchoolsError,
+    getSchoolsData: getSchoolsData,
+    addSchoolResponse: addSchoolResponse,
+    addSchoolIsLoading: addSchoolIsLoading,
+    addSchoolError: addSchoolError,
+    getSingleSchoolIsLoading: getSingleSchoolIsLoading,
+    getSingleSchoolError: getSingleSchoolError,
+    getSingleSchoolData: getSingleSchoolData,
+    deleteSchoolResponse: deleteSchoolResponse,
+    deleteSchoolIsLoading: deleteSchoolIsLoading,
+    deleteSchoolError: deleteSchoolError,
+    editedFormData: editedFormData,
+    editSchoolIsLoading: editSchoolIsLoading,
+    editSchoolError: editSchoolError,
+    editSchoolResponse: editSchoolResponse
+  };
+
+  return (
+    <SchoolContext.Provider value={contextData}>
+      {children}
+    </SchoolContext.Provider>
+  );
+};
