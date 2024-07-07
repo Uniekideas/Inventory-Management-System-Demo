@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Inventory-Management-System-Demo/static/css/main.d0807f92.css",
+    "main.js": "/Inventory-Management-System-Demo/static/js/main.735caa08.js",
+    "static/media/Logo-new2-1 1.jpg": "/Inventory-Management-System-Demo/static/media/Logo-new2-1 1.75c424b6470009c75e11.jpg",
+    "static/media/inventoryIcon.png": "/Inventory-Management-System-Demo/static/media/inventoryIcon.31bb49475318f5dfd665.png",
+    "static/media/NoNotification.png": "/Inventory-Management-System-Demo/static/media/NoNotification.926910259d46bac40518.png",
+    "static/media/schoolIcon.png": "/Inventory-Management-System-Demo/static/media/schoolIcon.e33a5de81ca694973d96.png",
+    "static/media/logoutIcon.png": "/Inventory-Management-System-Demo/static/media/logoutIcon.bddf826949e82e0e60bf.png",
+    "static/media/userManagement.png": "/Inventory-Management-System-Demo/static/media/userManagement.586a697f6975bcebc365.png",
+    "index.html": "/Inventory-Management-System-Demo/index.html",
+    "main.d0807f92.css.map": "/Inventory-Management-System-Demo/static/css/main.d0807f92.css.map",
+    "main.735caa08.js.map": "/Inventory-Management-System-Demo/static/js/main.735caa08.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0807f92.css",
+    "static/js/main.735caa08.js"
+  ]
+}
